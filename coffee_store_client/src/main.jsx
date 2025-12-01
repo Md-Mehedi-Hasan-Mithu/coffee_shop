@@ -19,15 +19,15 @@ let router = createBrowserRouter([
     children: [
       {
         index:true,
-        Component:Home,
+        Component:Home
       },
       {
         path:"add-coffee",
-        Component:AddCoffee,
+        Component:AddCoffee
       },
       {
         path:"update-coffee",
-        Component:UpdateCoffee,
+        Component:UpdateCoffee
       }
     ]
   },
