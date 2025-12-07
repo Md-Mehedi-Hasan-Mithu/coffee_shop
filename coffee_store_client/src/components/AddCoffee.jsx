@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 const AddCoffee = () => {
     const handleAddCoffee = (e) => {
         e.preventDefault();
@@ -17,7 +18,14 @@ const AddCoffee = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('After adding coffee to db',data)
+                if(data.insertedId){
+                    console.log('Coffee added successfully');
+                    Swal.fire({
+                    title: "Coffee Ordered!",
+                    icon: "success",
+                    draggable: true
+                    });
+                }
             })
 
      }
@@ -35,8 +43,8 @@ const AddCoffee = () => {
                     <input type="text" name='name' className="input w-full" placeholder="Coffee Name" />
                 </fieldset>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
-                    <label className="label">Chef</label>
-                    <input type="text" name='chef' className="input w-full" placeholder="Chef Name" />
+                    <label className="label">Quantity</label>
+                    <input type="number" name='quantity' className="input w-full" placeholder="Number of Coffee" />
                 </fieldset>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                     <label className="label">Supplier</label>
@@ -47,8 +55,8 @@ const AddCoffee = () => {
                     <input type="text" name='taste' className="input w-full" placeholder="Taste Name" />
                 </fieldset>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
-                    <label className="label">Category</label>
-                    <input type="text" name='category' className="input w-full" placeholder="Category Name" />
+                    <label className="label">Price</label>
+                    <input type="text" name='price' className="input w-full" placeholder="Amount" />
                 </fieldset>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                     <label className="label">Details</label>
