@@ -23,7 +23,8 @@ const AddCoffee = () => {
                     Swal.fire({
                     title: "Coffee Ordered!",
                     icon: "success",
-                    draggable: true
+                    draggable: true,
+                    timer: 1500,
                     });
                 }
             })
