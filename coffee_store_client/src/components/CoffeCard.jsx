@@ -1,8 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CoffeeCard = ({coffee}) =>{
+const CoffeeCard = ({coffee,coffees,setCoffees}) =>{
     const {_id,name,price,quantity,photo} = coffee;
+    const handleViewDetails = (_id)=>
+    {
+        console.log("view",_id);
+    };
 
     const handleDelete = (_id) => {
         console.log("delete",_id);
@@ -29,6 +34,9 @@ const CoffeeCard = ({coffee}) =>{
                     text: "Your file has been deleted.",
                     icon: "success"
             });
+            //remove deleted coffee from UI
+            const remainingCoffees = coffees.filter(cof => cof._id !== _id);
+            setCoffees(remainingCoffees);
                 }
             })
             
@@ -50,8 +58,12 @@ const CoffeeCard = ({coffee}) =>{
     </div>
     <div className="card-actions justify-end">
       <div className="join join-vertical space-y-1">
-  <button className="btn join-item">View</button>
+  <Link to={`/coffee/${_id}`}>
+  <button onClick={()=>handleViewDetails(_id)} className="btn join-item">View</button>
+  </Link>
+  <Link to={`/updateCoffee/${_id}`}>
   <button className="btn join-item">Edit</button>
+  </Link>
   <button onClick={() =>handleDelete(_id)} className="btn join-item">Delete</button>
 </div>
     </div>
